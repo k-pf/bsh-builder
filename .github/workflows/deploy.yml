@@ -13,6 +13,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
 
     steps:
       - uses: actions/checkout@v4
@@ -27,7 +28,6 @@ jobs:
         run: npm ci
 
       - name: Build
-        environment: github-pages
         run: |
           echo "===== Supabase URL: $SUPABASE_URL"
           npm run build
