@@ -94,7 +94,6 @@ const partials = {
 async function build() {
     try {
         const beers = await fetchDataFromSupabase();
-        console.debug(beers)
         const templateData = {
             // Asset paths (relative to dist/)
             assets: {
