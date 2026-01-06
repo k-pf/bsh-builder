@@ -28,9 +28,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: |
-          echo "===== Supabase URL: $SUPABASE_URL"
-          npm run build
+        run: npm run build
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

@@ -11,11 +11,14 @@ if (process.env.NODE_ENV !== 'production') {
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-console.debug('===== Supabase URL:', supabaseUrl);
 
 if (!supabaseUrl || !supabaseKey) {
     console.error('❌ Supabase credentials not found in environment variables');
-    console.error('   Make sure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set in .env file');
+    if (process.env.NODE_ENV !== 'production') {
+        console.error('   Make sure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set in .env file');
+    } else {
+        console.error('   Make sure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set in environment variables');
+    }
     process.exit(1);
 }
 const supabase = createClient(supabaseUrl, supabaseKey);
